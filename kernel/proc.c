@@ -695,3 +695,18 @@ procdump(void)
     printf("\n");
   }
 }
+
+// Get the number of in-use processes.
+extern uint64
+get_inuse_proc()
+{
+  int inuse_proc = 0;
+  int i;
+  for (i = 0; i < NPROC; i++) {
+    if (proc[i].state != UNUSED) {
+      inuse_proc++;
+    }
+  }
+
+  return inuse_proc;
+}
